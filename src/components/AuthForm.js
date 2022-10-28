@@ -42,15 +42,17 @@ function AuthForm() {
   const toggleAccount = () => setNewAccount((prev) =>!prev); //클릭할때마다 true false 변경
   return (
     <>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className="container">
         <input type ="email" placeholder="E-mail" required name="email"
-        onChange={onChange} value={email}
+        onChange={onChange} value={email} className="authInput"
         />
         <input type ="password" placeholder="Password" required name="password"
-        onChange={onChange} value = {password}
+        onChange={onChange} value = {password} className="authInput"
         />
-        <input type ="submit" value={newAccount ? 'Create Account' : 'Log In' }/>
-        {error}
+        <input type ="submit" className='authInput authSubmit' value={newAccount ? 'Create Account' : 'Log In' }/>
+        {error && 
+        <span className='authError'>{error}</span>
+        }
       </form>
       <span onClick={toggleAccount}>
         {newAccount ? "Sign In" : "Create Account"}
